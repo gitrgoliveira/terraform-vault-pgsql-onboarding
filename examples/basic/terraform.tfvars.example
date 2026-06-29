@@ -1,0 +1,6 @@
+cluster_name      = "ocp-prod-eu"
+db_name           = "payments-db"
+pg_connection_url = "postgresql://{{username}}:{{password}}@db.example.com:5432/payments?sslmode=require"
+pg_username       = "vault_root"
+pg_password       = "replace-me"
+rotate_root       = false
