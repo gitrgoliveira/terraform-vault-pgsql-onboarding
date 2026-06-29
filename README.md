@@ -40,6 +40,21 @@ Use-case root configuration.
 - This module is the shared database root configuration layer.
 - It creates no principal, policy grant, identity group, or YAML snippets.
 
+## No-code provisioning
+
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.1`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `pg_username` and `pg_password` are sensitive.
+
+Form fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `cluster_name` | yes | Cluster identifier |
+| `db_name` | yes | Database identifier |
+| `pg_connection_url` | yes | URL with `{{username}}`/`{{password}}` |
+| `pg_username` | yes | Root username (sensitive) |
+| `pg_password` | yes | Root password (sensitive) |
+| `rotate_root` | no | Default `false` |
+
 ## Registry usage
 
 ```hcl
