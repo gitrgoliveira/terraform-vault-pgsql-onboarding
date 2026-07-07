@@ -1,0 +1,15 @@
+# Pre-commit hooks for this Terraform module.
+# Enable locally with:  pip install pre-commit && pre-commit install
+# Run against everything: pre-commit run --all-files
+repos:
+  - repo: local
+    hooks:
+      - id: terraform-unused-vars
+        name: Terraform unused / echo-only input variables
+        description: >-
+          Fails on input variables that do no real work: pure pass-through echoes
+          (value = var.x), validation-only, or unused. tflint cannot see these.
+        entry: python3 scripts/check_unused_vars.py
+        language: system
+        files: \.tf$
+        pass_filenames: false
