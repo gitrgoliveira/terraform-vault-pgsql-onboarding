@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.1.0] - 2026-07-07
+
+### Removed
+- **Breaking:** removed the `vault_address` and `vault_namespace` input variables and their echo outputs. These inputs were echoed straight back as outputs and did no work in the module; downstream modules request these values as their own inputs.
+
 ## [0.0.2] - 2026-06-29
 
 ### Changed

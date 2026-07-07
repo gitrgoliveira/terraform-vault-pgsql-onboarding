@@ -22,8 +22,6 @@ Use-case root configuration.
 | `pg_password` | `string` | Root password, sensitive |
 | `allowed_roles` | `string` | Optional allowed role glob |
 | `rotate_root` | `bool` | Add root rotation statement, default `false` |
-| `vault_namespace` | `string` | Render-only |
-| `vault_address` | `string` | Render-only |
 
 ## Outputs
 
@@ -32,8 +30,6 @@ Use-case root configuration.
 | `db_mount_path` | Database mount path |
 | `db_connection_name` | Connection name |
 | `cluster_name` | Echo |
-| `vault_namespace` | Echo |
-| `vault_address` | Echo |
 
 ## No-code notes
 
@@ -42,7 +38,7 @@ Use-case root configuration.
 
 ## No-code provisioning
 
-This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.2`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `pg_username` and `pg_password` are sensitive.
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.1.0`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `pg_username` and `pg_password` are sensitive.
 
 Form fields:
 
@@ -60,7 +56,7 @@ Form fields:
 ```hcl
 module "onboard_pgsql_connection" {
   source  = "app.terraform.io/<org>/onboard-pgsql-connection/vault"
-  version = "~> 0.0.2"
+  version = "~> 0.1.0"
 
   cluster_name      = "ocp-prod-eu"
   db_name           = "payments-db"

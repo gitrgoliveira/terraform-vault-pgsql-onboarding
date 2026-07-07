@@ -47,15 +47,3 @@ variable "rotate_root" {
   description = "Whether to set root rotation statements on the connection."
   default     = false
 }
-
-variable "vault_address" {
-  type        = string
-  description = "Render-only Vault address value supplied via TF_VAR_vault_address."
-  default     = ""
-}
-
-variable "vault_namespace" {
-  type        = string
-  description = "Render-only Vault namespace value supplied via TF_VAR_vault_namespace."
-  default     = ""
-}
