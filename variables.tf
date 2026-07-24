@@ -28,6 +28,11 @@ variable "pg_connection_url" {
   type        = string
   description = "PostgreSQL connection URL with {{username}} and {{password}} placeholders."
   sensitive   = true
+
+  validation {
+    condition     = can(regex("\\{\\{username\\}\\}", var.pg_connection_url)) && can(regex("\\{\\{password\\}\\}", var.pg_connection_url))
+    error_message = "pg_connection_url must contain {{username}} and {{password}} placeholders."
+  }
 }
 
 variable "pg_password" {
