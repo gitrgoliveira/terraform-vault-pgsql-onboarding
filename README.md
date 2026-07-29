@@ -17,7 +17,7 @@ Use-case root configuration.
 |---|---|---|
 | `cluster_name` | `string` | Cluster identifier, regex validated |
 | `db_name` | `string` | Database identifier, regex validated |
-| `pg_connection_url` | `string` | Connection URL with placeholders |
+| `pg_connection_url` | `string` | Connection URL with placeholders, sensitive |
 | `pg_username` | `string` | Root username, sensitive |
 | `pg_password` | `string` | Root password, sensitive |
 | `allowed_roles` | `string` | Optional allowed role glob |
@@ -38,7 +38,7 @@ Use-case root configuration.
 
 ## No-code provisioning
 
-This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.2.0`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `pg_username` and `pg_password` are sensitive.
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.2.0`). Click **Provision workspace**, pick a project and workspace name, then complete the form. `pg_connection_url`, `pg_username`, and `pg_password` are sensitive.
 
 Form fields:
 
@@ -46,7 +46,7 @@ Form fields:
 |---|---|---|
 | `cluster_name` | yes | Cluster identifier |
 | `db_name` | yes | Database identifier |
-| `pg_connection_url` | yes | URL with `{{username}}`/`{{password}}` |
+| `pg_connection_url` | yes | Root DB connection URL with `{{username}}`/`{{password}}` placeholders (sensitive) |
 | `pg_username` | yes | Root username (sensitive) |
 | `pg_password` | yes | Root password (sensitive) |
 | `allowed_roles` | no | Glob pattern for allowed role names (defaults to `<cluster_name>-*` when empty) |
@@ -61,7 +61,9 @@ module "onboard_pgsql_connection" {
 
   cluster_name      = "ocp-prod-eu"
   db_name           = "payments-db"
-  pg_connection_url = "postgresql://{{username}}:{{password}}@db.example.com:5432/payments?sslmode=require"
+  # Sensitive — supply via a sensitive workspace variable, never a literal in HCL.
+  # Format: postgresql://{{username}}:{{password}}@<host>:5432/<db>?sslmode=require
+  pg_connection_url = var.pg_connection_url
   pg_username       = var.pg_username
   pg_password       = var.pg_password
 }
