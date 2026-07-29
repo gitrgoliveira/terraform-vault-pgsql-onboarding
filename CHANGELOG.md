@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] - 2026-07-29
+
+### Fixed
+
+- `pg_connection_url` is documented as sensitive in the inputs table, provisioning prose, and form-fields table; the usage example supplies it via a variable instead of an HCL literal.
+
 ## [0.2.0] - 2026-07-24
 
 ### Added
