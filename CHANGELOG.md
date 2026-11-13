@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.2] - 2026-11-13
+
+### Changed
+
+- Documentation only: The README usage example uses the module's registry name `pgsql-onboarding` (it named `onboard-pgsql-connection`), and its no-code pin and version constraint now point at the published release.
+
 ## [0.2.1] - 2026-07-29
 
 ### Fixed
